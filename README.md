@@ -1,7 +1,7 @@
 # TimeKeep-extension 
 
 ## お知らせ
-この拡張機能は作りかけです。そのため、多くのバグを含んでいます。もし、バグを発見された方は、[こちら](https://github.com/tou-rou2/TimeKeep-extension/issues/2)にお願いします。
+この拡張機能は作りかけです。そのため、多くのバグを含んでいます。もし、バグを発見された方は、[こちら](https://github.com/prisoners-trilemma/TimeKeep-extension/issues)にお願いします。  
 
 ## 対応ブラウザ 
 google chrome 
