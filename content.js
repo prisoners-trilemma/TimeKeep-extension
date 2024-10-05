@@ -21,15 +21,16 @@ try {
             return !url.startsWith(e);
           })
         ) {
+          const domain = url.split("/")[0];
           if (
             added[today] &&
             Object.keys(added[today]).some((e) => {
-              return url.startsWith(e);
+              return domain.startsWith(e);
             })
           ) {
-            const end = new Date(added[today][url][0]).setMinutes(
-              new Date(added[today][url][0]).getMinutes() +
-                Number(added[today][url][1])
+            const end = new Date(added[today][domain][0]).setMinutes(
+              new Date(added[today][domain][0]).getMinutes() +
+                Number(added[today][domain][1])
             );
             if (end - date <= 0) {
               timeOver(lists, sTime, fTime, date, url);
@@ -71,6 +72,7 @@ function timeOver(lists, sTime, fTime, date, url) {
         (fTime.hours == date.getHours() && date.getMinutes() <= fTime.minutes)))
   ) {
     document.body = document.createElement("body");
+    console.log("a");
   } else {
     const start = new Date(
       date.getFullYear(),
@@ -85,6 +87,7 @@ function timeOver(lists, sTime, fTime, date, url) {
     limit(start, date, () => {
       document.body = document.createElement("body");
     });
+    console.log("b");
   }
 }
 function limit(start, callback) {

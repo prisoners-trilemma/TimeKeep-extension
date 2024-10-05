@@ -306,7 +306,29 @@ try {
     });
   };
   document.getElementById("hReset").onclick = () => {
-    chrome.storage.local.clear();
+    const conf = confirm(
+      "変更をすると、すべてのページがリロードされますがよろしいですが？"
+    );
+    if (conf) {
+      chrome.storage.local.clear(() => {
+        chrome.tabs.query({}, (tabs) => {
+          for (let i of tabs) {
+            if (i.url.startsWith("http")) {
+              chrome.tabs.reload(i.id);
+            }
+          }
+          chrome.runtime.sendMessage("hard reset");
+          location.reload();
+        });
+      });
+    }else {
+        let content = document.createTextNode(
+          "変更がされませんでした。\nなにか問題がある場合はダイアログを許可してください。"
+        );
+        let note = document.createElement("p");
+        note.append(content);
+        document.body.prepend(note);
+      }
   };
   document.getElementById("switch").onclick = () => {
     const conf = confirm(
