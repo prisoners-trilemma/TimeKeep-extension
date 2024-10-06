@@ -84,7 +84,7 @@ function timeOver(lists, sTime, fTime, date, url) {
       sTime.hours,
       sTime.minutes
     );
-    limit(start, date, () => {
+    limit(start, () => {
       document.body = document.createElement("body");
     });
     console.log("b");
